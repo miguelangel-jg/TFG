@@ -18,7 +18,7 @@
     <a class="{{ request()->routeIs('dashboard', 'dashboard.*') ? 'active' : '' }}" href="{{ route('dashboard') }}"><i class="lni lni-home-2"></i></a>
     <a class="{{ request()->routeIs('search', 'search.*') ? 'active' : '' }}" href=""><i class="lni lni-search-1"></i></a>
     <a class="{{ request()->routeIs('messages', 'messages.*') ? 'active' : '' }}" href=""><i class="lni lni-message-2"></i></a>
-    <a class="{{ request()->routeIs('profile', 'profile.*') ? 'active' : '' }}" href=""><i class="lni lni-gear-1"></i></a>
+    <a class="{{ request()->routeIs('profile', 'profile.*') ? 'active' : '' }}" href=""><i class="lni lni-user-4"></i></a>
 
     <!-- FAB (Botón de Publicar) -->
     <div class="fab">
