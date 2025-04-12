@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'role', //Si es 0 es usuario y si es 1 es admin
+        'image', //Imagen de perfil
     ];
 
     /**
@@ -43,5 +44,12 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
         'role' => 'boolean',
+        'image' => 'string',
     ];
+
+    public function posts()
+{
+    return $this->hasMany(Post::class);
+}
+
 }

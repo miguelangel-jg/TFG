@@ -29,12 +29,31 @@
 
     <!-- Modal para Escribir Publicación -->
     <div id="postModal" class="modal">
-      <form class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Crear Publicación</h2>
-        <textarea placeholder="Escribe tu publicación aquí..."></textarea>
-        <button class="post-button">Publicar</button>
-      </form>
+        <form class="modal-content" action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-header">
+              <h5 class="modal-title" id="postModalLabel">Crear Publicación</h5>
+              <button type="button" class="btn-close" id="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+            </div>
+
+            <div class="modal-body">
+              <div class="mb-3">
+                <label for="content" class="form-label">Contenido</label>
+                <textarea name="content" id="content" class="form-control" rows="4"
+                          placeholder="¿Qué estás pensando?" required></textarea>
+              </div>
+
+              <div class="mb-3">
+                <label for="image" class="form-label">Subir Imagen (opcional)</label>
+                <input type="file" name="image" id="image" class="form-control" accept="image/*">
+              </div>
+            </div>
+
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+              <button type="submit" class="btn btn-primary">Publicar</button>
+            </div>
+          </form>
     </div>
   </nav>
 

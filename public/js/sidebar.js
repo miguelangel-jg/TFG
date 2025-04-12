@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
     modal.style.display = "none";
 
     const openModalBtn = document.getElementById("openModal");
-    const closeModal = document.querySelector(".close");
+    const closeModal = document.getElementById("btn-close");
 
     // Abrir modal
     openModalBtn.addEventListener("click", function () {
