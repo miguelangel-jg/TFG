@@ -30,34 +30,33 @@
         </div>
     @endif
 
-    <!-- Modal para Escribir Publicación -->
-    <div id="postModal" class="modal">
-        <form class="modal-content" action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
+    <!-- Modal para Crear Publicación -->
+    <div id="postModal" class="custom-modal">
+        <form class="modal-content-custom" action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <div class="modal-header">
-              <h5 class="modal-title" id="postModalLabel">Crear Publicación</h5>
-              <button type="button" class="btn-close" id="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+
+            <!-- Cabecera del modal -->
+            <div class="modal-header-custom">
+                <h5 class="modal-title-custom">Crear nueva publicación</h5>
+                <span class="close-custom" id="btn-close">&times;</span>
             </div>
 
-            <div class="modal-body">
-              <div class="mb-3">
-                <label for="content" class="form-label">Contenido</label>
-                <textarea name="content" id="content" class="form-control" rows="4"
-                          placeholder="¿Qué estás pensando?" required></textarea>
-              </div>
+            <!-- Cuerpo del modal -->
+            <div class="modal-body-custom">
+                <label for="content" class="form-label-custom">¿Qué estás pensando?</label>
+                <textarea name="content" id="content" rows="4" required></textarea>
 
-              <div class="mb-3">
-                <label for="image" class="form-label">Subir Imagen (opcional)</label>
-                <input type="file" name="image" id="image" class="form-control" accept="image/*">
-              </div>
+                <label for="image" class="form-label-custom mt-3">Subir imagen (opcional)</label>
+                <input type="file" name="image" id="image" accept="image/*">
             </div>
 
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <button type="submit" class="btn btn-primary">Publicar</button>
+            <!-- Pie del modal -->
+            <div class="modal-footer-custom">
+                <button type="submit" class="btn-submit">Publicar</button>
             </div>
-          </form>
+        </form>
     </div>
+
   </nav>
 
   <!-- Bootstrap JS and Popper.js -->

@@ -20,20 +20,6 @@ body {
     --color-text: #333333; /* Texto oscuro */
   }
 
-  body {
-    display: grid;
-    place-items: center;
-    margin: 0;
-    height: 100vh;
-    background: var(--color-background); /* Fondo verde claro */
-    font-family: "Poppins", sans-serif;
-    color: var(--color-text); /* Texto oscuro */
-  }
-
-  * {
-    box-sizing: border-box;
-  }
-
   .background {
     position: fixed;
     z-index: -1;

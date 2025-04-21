@@ -27,7 +27,7 @@
                     <p class="card-text">{{ $post->content }}</p>
 
                     @if ($post->image)
-                        <img src="{{ asset('storage/app/public/' . $post->image) }}" class="img-fluid rounded mt-2" alt="Imagen de la publicación">
+                        <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid rounded mt-2" alt="Publicación">
                     @endif
 
                     <p class="card-text">

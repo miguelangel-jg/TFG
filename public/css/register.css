@@ -7,11 +7,11 @@ body {
     font-family: "Poppins", sans-serif;
     color: var(--color-text); /* Texto oscuro */
   }
-  
+
   * {
     box-sizing: border-box;
   }
-  
+
   :root {
     --color-primary: rgb(92, 209, 120); /* Verde del logo */
     --color-secondary: #C6FEC1; /* Verde claro del logo */
@@ -19,21 +19,7 @@ body {
     --color-background: #E8F8E8; /* Fondo verde claro */
     --color-text: #333333; /* Texto oscuro */
   }
-  
-  body {
-    display: grid;
-    place-items: center;
-    margin: 0;
-    height: 100vh;
-    background: var(--color-background); /* Fondo verde claro */
-    font-family: "Poppins", sans-serif;
-    color: var(--color-text); /* Texto oscuro */
-  }
-  
-  * {
-    box-sizing: border-box;
-  }
-  
+
   .background {
     position: fixed;
     z-index: -1;
@@ -44,7 +30,7 @@ body {
     translate: -50% 0;
     width: 150vw;
   }
-  
+
   svg {
     position: absolute;
     top: -5rem;
@@ -57,7 +43,7 @@ body {
     display: block;
     pointer-events: none;
   }
-  
+
   .login {
     position: relative;
     z-index: 2;
@@ -72,22 +58,22 @@ body {
     justify-content: center;
     text-align: center;
   }
-  
+
   .login h2 {
     font-size: 1.5rem;
   }
-  
+
   .login form {
     display: grid;
     gap: 0.6rem;
     width: 100%;
     margin: 0 0 32px;
   }
-  
+
   .login .form-group label {
     color: var(--color-secondary);
   }
-  
+
   .login .form-control {
     background: var(--color-accent);
     color: inherit;
@@ -96,11 +82,11 @@ body {
     box-shadow: 0 0 0 2px transparent;
     transition: 0.3s;
   }
-  
+
   .login .form-control:focus {
     box-shadow: 0 0 0 2px var(--color-primary);
   }
-  
+
   .login button {
     position: relative;
     color: #f9f9f9;
@@ -109,7 +95,7 @@ body {
     cursor: pointer;
     transition: 0.3s;
   }
-  
+
   .login button span {
     position: absolute;
     top: 52%;
@@ -118,12 +104,12 @@ body {
     opacity: 0;
     font-size: 22px;
   }
-  
+
   .login button:hover {
     background-color: var(--color-accent);
     color: var(--color-text);
   }
-  
+
   .login button:hover span {
     opacity: 1;
     translate: 50px -50%;
