@@ -26,16 +26,14 @@
 
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
-            @include('layouts.navigation')
 
             <!-- Page Content -->
             <main>
                 {{ $slot }}
             </main>
 
+            {{-- Sidebar --}}
+            <x-sidebar/>
         </div>
-
-        {{-- Sidebar --}}
-        <x-sidebar/>
     </body>
 </html>

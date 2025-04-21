@@ -20,12 +20,15 @@
     <a class="{{ request()->routeIs('messages', 'messages.*') ? 'active' : '' }}" href=""><i class="lni lni-message-2"></i></a>
     <a class="{{ request()->routeIs('profile', 'profile.*') ? 'active' : '' }}" href="{{ route('profile.edit') }}"><i class="lni lni-user-4"></i></a>
 
-    <!-- FAB (Botón de Publicar) -->
-    <div class="fab">
-      <button id="openModal">
-        <i class="lni lni-plus"></i>
-      </button>
-    </div>
+    <!-- FAB solo visible en la ruta 'dashboard' -->
+    @if (request()->routeIs('dashboard', 'dashboard.*'))
+        <!-- FAB (Botón de Publicar) -->
+        <div class="fab">
+        <button id="openModal">
+            <i class="lni lni-plus"></i>
+        </button>
+        </div>
+    @endif
 
     <!-- Modal para Escribir Publicación -->
     <div id="postModal" class="modal">

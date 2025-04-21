@@ -29,4 +29,18 @@
             </div>
         </div>
     </div>
+
+    {{-- Cerrar sesión --}}
+    <div name="content" class="flex items-center justify-center mb-5 p-5">
+        <!-- Authentication -->
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+
+            <x-dropdown-link :href="route('logout')"
+                    onclick="event.preventDefault();
+                                this.closest('form').submit();">
+                {{ __('Log Out') }}
+            </x-dropdown-link>
+        </form>
+    </div>
 </x-app-layout>
