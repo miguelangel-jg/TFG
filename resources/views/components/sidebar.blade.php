@@ -34,6 +34,7 @@
     <div id="postModal" class="custom-modal">
         <form class="modal-content-custom" action="{{ route('posts.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <input type="hidden" name="_form_token" value="{{ \Str::uuid() }}">
 
             <!-- Cabecera del modal -->
             <div class="modal-header-custom">

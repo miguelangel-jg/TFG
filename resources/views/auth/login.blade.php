@@ -10,13 +10,14 @@
 
     <div class="login container py-2 px-4">
         <figure class="d-flex justify-content-center align-items-center">
-            <img src="{{ asset('img/Logo_grande.png') }}" width="40%"/>
+            <img src="{{ asset('img/Logo_grande.png') }}" width="40%" alt="logo"/>
         </figure>
 
         <h2 class="mb-5">Bienvenido a The PlayGround</h2>
 
         <form class="form" method="POST" action="{{ route('login') }}">
             @csrf
+            <input type="hidden" name="_form_token" value="{{ \Str::uuid() }}">
 
             <!-- Email Address -->
 
