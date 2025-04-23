@@ -10,7 +10,7 @@
 
     <div class="login container py-2 px-4">
         <figure class="d-flex justify-content-center align-items-center">
-            <img src="{{ asset('img/Logo_grande.png') }}" width="40%"/>
+            <img src="{{ asset('img/Logo_grande.png') }}" width="40%" />
         </figure>
 
         <h2 class="mb-5">Bienvenido a The PlayGround</h2>
@@ -20,7 +20,7 @@
 
             <!-- Name -->
             <div class="form-floating mb-3">
-                <input type="text" class="form-control" id="name" name="name" placeholder="">
+                <input type="text" class="form-control" id="name" name="name" value="{{old('name')}}" placeholder="">
                 <label for="name" class="d-flex align-items-center">
                     <span class="material-symbols-outlined me-2">person</span>
                     Nombre de usuario
@@ -30,7 +30,8 @@
 
             <!-- Email Address -->
             <div class="form-floating mb-3">
-                <input type="email" class="form-control" id="email" name="email" placeholder="">
+                <input type="email" class="form-control" id="email" name="email" value="{{old(key: 'email')}}"
+                    placeholder="">
                 <label for="email" class="d-flex align-items-center">
                     <span class="material-symbols-outlined me-2">email</span>
                     Email
@@ -99,4 +100,3 @@
         </svg>
     </div>
 </x-guest-layout>
-
