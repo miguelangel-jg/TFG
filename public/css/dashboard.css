@@ -1,34 +1,28 @@
 :root {
-    --color-primary: #5cd178; /* Verde del logo */
-    --color-secondary: #c6fec1; /* Verde claro del logo */
-    --color-accent: #a3e4b1; /* Verde intermedio */
-    --color-background: #e8f8e8; /* Fondo verde claro */
-    --color-text: #333333; /* Texto oscuro */
-  }
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+    --color-primary: #5cd178;
+    --color-secondary: #c6fec1;
+    --color-accent: #a3e4b1;
+    --color-background: #e8f8e8;
+    --color-text: #333333;
   }
 
   body {
     font-family: "Poppins", sans-serif;
+    background-color: var(--color-background);
   }
 
-header {
+  header {
     border-bottom: 1px solid #eee;
     background-color: #fff;
-}
+  }
 
-.section-heading {
+  .section-heading {
     font-size: 1.25rem;
     color: var(--color-primary);
-    letter-spacing: 0.5px;
     position: relative;
-}
+  }
 
-.section-heading::after {
+  .section-heading::after {
     content: "";
     position: absolute;
     bottom: -5px;
@@ -37,30 +31,36 @@ header {
     height: 3px;
     background-color: var(--color-accent);
     border-radius: 2px;
-}
+  }
 
-.app-brand{
+  .app-brand {
     width: 175px;
     height: 100px;
-}
+  }
 
-.app-brand img {
+  .app-brand img {
     object-fit: cover;
     width: 100%;
     height: 100%;
-}
+  }
 
-.post-card {
-    background-color: var(--color-background);
-    border: 1px solid var(--color-accent);
-    border-radius: 16px;
-    box-shadow: 0 4px 8px rgba(92, 209, 120, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.3s ease;
+  .posts-container {
+    max-width: 800px;
+    margin: auto;
+    padding: 0 15px;
+  }
+
+  .post-card {
+    background-color: #fff;
+    border: 1px solid #e0f5e5;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    transition: all 0.3s ease-in-out;
+    margin-bottom: 2rem;
   }
 
   .post-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 8px 16px rgba(92, 209, 120, 0.2);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.08);
   }
 
   .post-card .card-body {
@@ -68,37 +68,67 @@ header {
     color: var(--color-text);
   }
 
-  .post-card .card-title {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--color-primary);
+  .user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 1rem;
   }
 
-  .post-card .avatar {
-    border-radius: 50%;
-    border: 2px solid var(--color-primary);
+  .user-info .avatar {
     width: 50px;
     height: 50px;
     object-fit: cover;
-    margin-right: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--color-primary);
   }
 
-  .post-card .card-text {
+  .user-info .name {
+    font-weight: 600;
     font-size: 1rem;
-    margin-top: 0.5rem;
-    color: var(--color-text);
+    color: var(--color-primary);
   }
 
-  .post-card .post-image {
+  .card-text {
+    font-size: 1rem;
+    color: var(--color-text);
+    margin-top: 0.5rem;
+  }
+
+  .post-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 10px;
     margin-top: 1rem;
+  }
+
+  .post-gallery img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
     border-radius: 12px;
     border: 1px solid var(--color-secondary);
-    object-fit: cover;
-    width: 80%;
   }
 
   .post-meta {
     font-size: 0.85rem;
     color: #666;
     margin-top: 0.75rem;
+  }
+
+  .post-footer {
+    border-top: 1px solid #ddd;
+    padding-top: 0.75rem;
+  }
+
+  .post-actions .post-icon {
+    font-size: 1.2rem;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: transform 0.2s ease;
+  }
+
+  .post-actions .post-icon:hover {
+    transform: scale(1.2);
+    color: var(--color-accent);
   }
