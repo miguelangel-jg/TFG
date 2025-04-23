@@ -47,8 +47,8 @@
                 <label for="content" class="form-label-custom">¿Qué estás pensando?</label>
                 <textarea name="content" id="content" rows="4" required></textarea>
 
-                <label for="image" class="form-label-custom mt-3">Subir imagen (opcional)</label>
-                <input type="file" name="image" id="image" accept="image/*">
+                <label for="image" class="form-label-custom mt-3">Subir imágenes (opcional)</label>
+                <input type="file" name="images[]" id="image" accept="image/*" multiple>
             </div>
 
             <!-- Pie del modal -->

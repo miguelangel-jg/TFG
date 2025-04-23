@@ -24,13 +24,18 @@ class PostController extends Controller
         // Crear un nuevo post
         $post = new Post();
         $post->content = $request->content;
-        if ($request->hasFile('image')) {
-            // Guardar la imagen en el almacenamiento y obtener la ruta
-            $path = $request->file('image')->store('images', 'public');
-            $post->image = $path;
-        }
-        $post->user_id = auth()->id(); // Si estás usando autenticación y quieres asociar al usuario
+        $post->user_id = auth()->id(); // Asociar el usuario
         $post->save();
+
+        // Ahora guardar las imágenes
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $path = $image->store('images', 'public');
+                $post->images()->create([
+                    'path' => $path
+                ]);
+            }
+        }
 
         // Redirigir a la página principal o a alguna vista específica
         return redirect()->route('dashboard')->with('success', 'Post creado exitosamente');

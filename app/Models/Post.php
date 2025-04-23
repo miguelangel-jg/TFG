@@ -20,4 +20,11 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    // Relación con imagenes
+    public function images()
+    {
+    return $this->hasMany(PostImage::class);
+    }
+
 }

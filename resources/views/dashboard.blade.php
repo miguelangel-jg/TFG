@@ -17,27 +17,37 @@
         </div>
     </header>
 
-
-    <div class="container">
-
+    <div class="container mt-4 mb-5 pb-5">
         @forelse ($posts as $post)
-            <div class="card mb-3">
-                <div class="card-body">
-                    <h5 class="card-title">{{ $post->user->name ?? 'Usuario' }}</h5>
+            <div class="card post-card mb-4">
+                <div class="card-body d-flex flex-column">
+                    <!-- Usuario -->
+                    <div class="d-flex align-items-center mb-2">
+                        <img src="{{ asset('storage/' . $post->user->image) }}" alt="Avatar" class="avatar me-2">
+                        <h5 class="card-title m-0">{{ $post->user->name ?? 'Usuario' }}</h5>
+                    </div>
+
+                    <!-- Contenido -->
                     <p class="card-text">{{ $post->content }}</p>
 
-                    @if ($post->image)
-                        <img src="{{ asset('storage/' . $post->image) }}" class="img-fluid rounded mt-2" alt="Publicación">
+                    <!-- Imagen de la publicación -->
+                    @if ($post->images)
+                    <div class="d-flex flex-wrap gap-3 mt-2">
+                        @foreach ($post->images as $img)
+                            <img src="{{ asset('storage/' . $img->path) }}" class="img-fluid rounded post-image" style="max-width: 250px;" alt="Img post">
+                        @endforeach
+                    </div>
                     @endif
 
-                    <p class="card-text">
-                        <small class="text-muted">Publicado el {{ $post->created_at->format('d/m/Y H:i') }}</small>
+
+                    <!-- Fecha -->
+                    <p class="post-meta text-end">
+                        Publicado el {{ $post->created_at->format('d/m/Y H:i') }}
                     </p>
                 </div>
             </div>
         @empty
-            <p>No hay publicaciones todavía.</p>
+            <p class="text-muted">No hay publicaciones todavía.</p>
         @endforelse
     </div>
-
 </x-app-layout>

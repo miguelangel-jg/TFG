@@ -66,6 +66,7 @@ class RegisteredUserController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'image' => 'images/user.png',
         ]);
 
         Mail::to($user->email)->send(new BienvenidaUsuario($user));
