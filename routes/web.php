@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,7 +32,14 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])
     ->name('dashboard');
 
+// Cargar posts
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+// Dar like
 Route::post('/posts/{post}/like', [PostController::class, 'toggleLike'])->name('posts.toggleLike');
+// Comentar post
+Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
+// Eliminar comentario
+Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware('auth');
+
 
 require __DIR__ . '/auth.php';

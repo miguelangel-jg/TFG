@@ -44,3 +44,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     });
   });
+
+
+  document.querySelectorAll('.toggle-comments').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const commentsSection = btn.closest('.card-body').querySelector('.comments-section');
+        commentsSection.classList.toggle('d-none');
+    });
+});
