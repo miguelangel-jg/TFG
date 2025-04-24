@@ -32,5 +32,6 @@ Route::get('/dashboard', [DashboardController::class, 'index'])
     ->name('dashboard');
 
 Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
+Route::post('/posts/{post}/like', [PostController::class, 'toggleLike'])->name('posts.toggleLike');
 
 require __DIR__ . '/auth.php';

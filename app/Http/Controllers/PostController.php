@@ -40,4 +40,25 @@ class PostController extends Controller
         // Redirigir a la página principal o a alguna vista específica
         return redirect()->route('dashboard')->with('success', 'Post creado exitosamente');
     }
+
+    //Dar me gusta a un post
+    public function toggleLike(Post $post)
+    {
+        $user = auth()->user();
+
+        // Verificamos si el usuario ya dio like a este post
+        $like = $post->likes()->where('user_id', $user->id)->first();
+
+        if ($like) {
+            // Si ya existe un like, lo eliminamos
+            $like->delete();
+        } else {
+            // Si no existe un like, lo creamos
+            $post->likes()->create(['user_id' => $user->id]);
+        }
+
+        // Redirigimos de nuevo a la vista con el post
+        return redirect()->back();
+    }
+
 }

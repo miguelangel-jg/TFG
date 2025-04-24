@@ -29,16 +29,23 @@
                     @if ($post->images)
                     <div class="post-gallery">
                         @foreach ($post->images as $img)
-                            <img src="{{ asset('storage/' . $img->path) }}" alt="Imagen del post">
+                            <img src="{{ asset('storage/' . $img->path) }}" alt="Post Img">
                         @endforeach
                     </div>
                     @endif
 
                     <!-- Footer del post: botones e info -->
                     <div class="post-footer d-flex justify-content-between align-items-center mt-3">
-                        <div class="post-actions d-flex align-items-center gap-3">
-                            <i class="bi bi-heart post-icon"></i>
-                        </div>
+                        {{-- Botón de Like --}}
+                        <form action="{{ route('posts.toggleLike', $post) }}" method="POST">
+                            @csrf
+                            <button type="submit" class="btn-like">
+                                <i class="like-icon {{ $post->likes()->where('user_id', auth()->id())->exists() ? 'fas' : 'far' }} fa-heart"></i>
+                                <span class="like-count">{{ $post->likes()->count() }}</span>
+                            </button>
+                        </form>
+
+                        {{-- Fecha y Hora --}}
                         <p class="post-meta m-0">
                             {{ $post->created_at->format('d/m/Y H:i') }}
                         </p>
@@ -55,7 +62,7 @@
         <div class="modal-dialog modal-dialog-centered modal-lg">
             <!-- Imagen dentro del modal -->
             <div class="modal-body d-flex justify-content-center align-items-center p-0" style="min-height: 80vh;">
-            <img id="modalImage" src="" class="img-fluid rounded shadow" alt="Imagen ampliada" style="max-height: 90vh; object-fit: contain;">
+            <img id="modalImage" src="" class="img-fluid rounded shadow" alt="Img ampliada" style="max-height: 90vh; object-fit: contain;">
             </div>
         </div>
     </div>
