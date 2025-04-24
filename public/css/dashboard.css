@@ -133,3 +133,46 @@
     color: var(--color-accent);
   }
 
+  .like-icon {
+    font-size: 1.6rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+    color: var(--color-secondary); /* Corazón vacío */
+    cursor: pointer;
+  }
+
+  .fas.fa-heart {
+    color: var(--color-primary); /* Corazón lleno */
+  }
+
+  .btn-like {
+    background: none;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0;
+  }
+
+  .btn-like:hover .like-icon {
+    transform: scale(1.2);
+    color: var(--color-accent); /* Hover */
+  }
+
+  /* 💖 Animación al hacer "me gusta" */
+  .animate-like {
+    animation: pop 0.3s ease;
+  }
+
+  @keyframes pop {
+    0% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.5);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+
+

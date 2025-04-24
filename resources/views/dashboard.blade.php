@@ -37,13 +37,11 @@
                     <!-- Footer del post: botones e info -->
                     <div class="post-footer d-flex justify-content-between align-items-center mt-3">
                         {{-- Botón de Like --}}
-                        <form action="{{ route('posts.toggleLike', $post) }}" method="POST">
-                            @csrf
-                            <button type="submit" class="btn-like">
-                                <i class="like-icon {{ $post->likes()->where('user_id', auth()->id())->exists() ? 'fas' : 'far' }} fa-heart"></i>
-                                <span class="like-count">{{ $post->likes()->count() }}</span>
-                            </button>
-                        </form>
+                        <button class="btn-like" data-post-id="{{ $post->id }}">
+                            <i class="like-icon {{ $post->likes()->where('user_id', auth()->id())->exists() ? 'fas' : 'far' }} fa-heart"></i>
+                            <span class="like-count">{{ $post->likes()->count() }}</span>
+                        </button>
+
 
                         {{-- Fecha y Hora --}}
                         <p class="post-meta m-0">
