@@ -1,13 +1,22 @@
 <x-app-layout>
-    <x-slot name="title">Buscar usuarios</x-slot>
+    <x-slot name="title">Buscar</x-slot>
 
     <link rel="stylesheet" href="{{ asset('css/search.css') }}">
 
-    <div class="search-page">
-        <h1 class="search-title">Buscar personas</h1>
+    {{-- Header --}}
+    <header class="d-flex justify-content-between align-items-center px-3 shadow-sm bg-white">
+        <div class="section-title">
+            <h5 class="m-0 fw-bold section-heading">Buscar usuarios</h5>
+        </div>
+        <div class="app-brand d-flex align-items-center">
+            <img src="{{ asset('img/Logo_y_nombre.png') }}" alt="Logo de la app">
+        </div>
+    </header>
 
+    <div class="search-wrapper">
         <div class="search-box">
-            <input type="text" id="user-search" placeholder="Escribe un nombre o usuario..." autocomplete="off">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="user-search" placeholder="Buscar usuarios..." autocomplete="off">
             <ul id="search-results" class="results-list"></ul>
         </div>
     </div>

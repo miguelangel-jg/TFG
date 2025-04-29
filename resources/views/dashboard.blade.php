@@ -3,6 +3,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/dashboard.css') }}">
 
+    {{-- Header --}}
     <header class="d-flex justify-content-between align-items-center px-3 shadow-sm bg-white">
         <div class="section-title">
             <h5 class="m-0 fw-bold section-heading">Últimos posts</h5>
