@@ -4,6 +4,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\SearchController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,6 +41,15 @@ Route::post('/posts/{post}/like', [PostController::class, 'toggleLike'])->name('
 Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
 // Eliminar comentario
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware('auth');
+
+
+Route::get('/search', [SearchController::class, 'search'])->name('search')->middleware('auth');
+Route::get('/search/{name}', [SearchController::class, 'perfil'])->name('search.perfil')->middleware('auth');
+
+
+Route::get('/messages', function () {
+    return view('messages');
+})->name('messages')->middleware('auth');
 
 
 require __DIR__ . '/auth.php';

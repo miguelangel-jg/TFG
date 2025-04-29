@@ -16,8 +16,8 @@
 
 <nav class="navbar d-flex justify-content-around align-items-center">
     <a class="{{ request()->routeIs('dashboard', 'dashboard.*') ? 'active' : '' }}" href="{{ route('dashboard') }}"><i class="lni lni-home-2"></i></a>
-    <a class="{{ request()->routeIs('search', 'search.*') ? 'active' : '' }}" href=""><i class="lni lni-search-1"></i></a>
-    <a class="{{ request()->routeIs('messages', 'messages.*') ? 'active' : '' }}" href=""><i class="lni lni-message-2"></i></a>
+    <a class="{{ request()->routeIs('search', 'search.*') ? 'active' : '' }}" href="{{ route('search') }}"><i class="lni lni-search-1"></i></a>
+    <a class="{{ request()->routeIs('messages', 'messages.*') ? 'active' : '' }}" href="{{ route('messages') }}"><i class="lni lni-message-2"></i></a>
     <a class="{{ request()->routeIs('profile', 'profile.*') ? 'active' : '' }}" href="{{ route('profile.edit') }}"><i class="lni lni-user-4"></i></a>
 
     <!-- FAB solo visible en la ruta 'dashboard' -->
