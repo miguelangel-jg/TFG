@@ -31,8 +31,12 @@ class SearchController extends Controller
 
     // Mostrar perfil del usuario por su nombre (único)
     public function perfil($name)
-    {
-        $user = User::where('name', $name)->firstOrFail();
-        return view('perfilSearch', compact('user'));
-    }
+{
+    $user = User::where('name', $name)
+        ->with(['posts', 'likedPosts.user']) // Carga el autor de cada post que le gustó
+        ->firstOrFail();
+
+    return view('perfilSearch', compact('user'));
+}
+
 }

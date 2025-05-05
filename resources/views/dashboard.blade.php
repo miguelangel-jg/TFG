@@ -60,7 +60,7 @@
                         </div>
 
                         {{-- Fecha --}}
-                        <p class="post-meta m-0">{{ $post->created_at->format('d/m/Y H:i') }}</p>
+                        <p class="post-meta m-0">{{ $post->created_at->translatedFormat('d M Y H:i') }}</p>
                     </div>
 
                     <div class="comments-section d-none mt-3">
