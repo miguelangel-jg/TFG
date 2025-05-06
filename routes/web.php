@@ -25,6 +25,7 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::get('/profile/config', [ProfileController::class, 'config'])->name('profile.config');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
@@ -41,6 +42,8 @@ Route::post('/posts/{post}/like', [PostController::class, 'toggleLike'])->name('
 Route::post('/posts/{post}/comments', [CommentController::class, 'store'])->middleware('auth')->name('comments.store');
 // Eliminar comentario
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->name('comments.destroy')->middleware('auth');
+//Borrar post
+Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 
 Route::get('/search', [SearchController::class, 'search'])->name('search')->middleware('auth');

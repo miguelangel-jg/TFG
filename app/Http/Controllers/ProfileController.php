@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Post;
 
 class ProfileController extends Controller
 {
@@ -17,8 +18,11 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        // Obtener los posts más recientes
+        $posts = Post::where('user_id', $request->user()->id)->latest()->get();
         return view('profile.edit', [
             'user' => $request->user(),
+            'posts' => $posts,
         ]);
     }
 
@@ -77,5 +81,11 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function config(Request $request)
+    {
+        $user = $request->user();
+        return view('profile.config', compact('user'));
     }
 }

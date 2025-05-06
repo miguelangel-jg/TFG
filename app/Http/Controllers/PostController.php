@@ -43,24 +43,36 @@ class PostController extends Controller
 
     //Dar me gusta a un post
     public function toggleLike(Post $post)
-{
-    $user = auth()->user();
+    {
+        $user = auth()->user();
 
-    $like = $post->likes()->where('user_id', $user->id)->first();
+        $like = $post->likes()->where('user_id', $user->id)->first();
 
-    if ($like) {
-        $like->delete();
-        $liked = false;
-    } else {
-        $post->likes()->create(['user_id' => $user->id]);
-        $liked = true;
+        if ($like) {
+            $like->delete();
+            $liked = false;
+        } else {
+            $post->likes()->create(['user_id' => $user->id]);
+            $liked = true;
+        }
+
+        return response()->json([
+            'liked' => $liked,
+            'likes' => $post->likes()->count(),
+        ]);
     }
+    public function destroy(Post $post)
+    {
+        // Verifica si el usuario autenticado es el dueño del post
+        if (auth()->id() !== $post->user_id) {
+            // Si no es el dueño, redirige con error 403
+            return redirect()->route('dashboard')->with('error', 'No tienes permiso para eliminar este post.');
+        }
 
-    return response()->json([
-        'liked' => $liked,
-        'likes' => $post->likes()->count(),
-    ]);
-}
+        // Eliminar el post
+        $post->delete();
 
-
+        // Redirige a la página de inicio o dashboard con un mensaje de éxito
+        return redirect()->route('dashboard')->with('status', 'Post eliminado correctamente.');
+    }
 }
