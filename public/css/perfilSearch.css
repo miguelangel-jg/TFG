@@ -20,6 +20,7 @@ body {
     max-width: 1200px;
     margin: auto;
     padding: 2rem 1rem;
+    padding-bottom: 5rem;
 }
 
 /* Header estilo Instagram */
@@ -100,8 +101,8 @@ body {
 }
 
 .tab-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    display: flex;
+    flex-direction: column;
     gap: 1.5rem;
 }
 

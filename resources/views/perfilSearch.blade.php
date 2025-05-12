@@ -11,7 +11,6 @@
             </div>
             <div class="perfil-right">
                 <h1>{{ $user->name }}</h1>
-                <p>{{ $user->email }}</p>
                 <div class="perfil-stats">
                     <span><strong>{{ $user->posts->count() }}</strong> publicaciones</span>
                     <span><strong>{{ $user->likedPosts->count() }}</strong> me gusta</span>
@@ -26,41 +25,19 @@
                 <button class="tab-button" onclick="showTab('likes')">Me gusta</button>
             </div>
 
+            {{-- Publicaciones --}}
             <div class="tab-content" id="posts">
                 @forelse ($user->posts as $post)
-                    <div class="post-card">
-                        <div class="post-user">
-                            <img src="{{ $user->image ? asset('storage/' . $user->image) : asset('images/default-avatar.png') }}" class="avatar" alt="avatar">
-                            <div>
-                                <h4>{{ $user->name }}</h4>
-                                <small>{{ $post->created_at->translatedFormat('d M Y H:i') }}</small>
-                            </div>
-                        </div>
-                        <p class="post-content">{{ $post->content }}</p>
-                        @if($post->image)
-                            <img src="{{ asset('storage/' . $post->image) }}" class="post-image" alt="Post">
-                        @endif
-                    </div>
+                    <x-post-card :post="$post" />
                 @empty
-                    <p>Este usuario no ha publicado nada aún.</p>
+                    <p>No hay publicaciones que le hayan gustado.</p>
                 @endforelse
             </div>
 
+            {{-- Likes --}}
             <div class="tab-content hidden" id="likes">
                 @forelse ($user->likedPosts as $post)
-                    <div class="post-card">
-                        <div class="post-user">
-                            <img src="{{ $post->user->image ? asset('storage/' . $post->user->image) : asset('images/default-avatar.png') }}" class="avatar" alt="avatar">
-                            <div>
-                                <h4>{{ $post->user->name }}</h4>
-                                <small>{{ $post->created_at->translatedFormat('d M Y H:i') }}</small>
-                            </div>
-                        </div>
-                        <p class="post-content">{{ $post->content }}</p>
-                        @if($post->image)
-                            <img src="{{ asset('storage/' . $post->image) }}" class="post-image" alt="Post">
-                        @endif
-                    </div>
+                    <x-post-card :post="$post" />
                 @empty
                     <p>No hay publicaciones que le hayan gustado.</p>
                 @endforelse
@@ -68,12 +45,6 @@
         </div>
     </div>
 
-    <script>
-        function showTab(id) {
-            document.querySelectorAll('.tab-button').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
-            document.getElementById(id).classList.remove('hidden');
-            event.target.classList.add('active');
-        }
-    </script>
+    <script src="{{ asset('js/dashboard.js') }}"></script>
+    <script src="{{ asset('js/perfilSearch.js') }}"></script>
 </x-app-layout>
