@@ -19,7 +19,7 @@
                 <div class="card-body">
                     <!-- Usuario -->
                     <div class="user-info">
-                        <img src="{{ asset($post->user->profile_photo_path ?? 'img/user.png') }}" alt="Avatar"
+                        <img src="{{ asset('storage/' . $post->user->image) }}" alt="Avatar"
                             class="avatar">
                         <span class="name">{{ $post->user->name ?? 'Usuario' }}</span>
                     </div>
@@ -59,21 +59,6 @@
                         {{-- Fecha --}}
                         <p class="post-meta m-0">{{ $post->created_at->translatedFormat('d M Y H:i') }}</p>
                     </div>
-
-                    <!-- Mostrar papelera solo si el usuario es el propietario del post -->
-                    @if (auth()->id() === $post->user_id)
-                        <div class="post-delete d-flex justify-content-end mt-2">
-                            <form action="{{ route('posts.destroy', $post) }}" method="POST"
-                                onsubmit="return confirm('¿Estás seguro de que deseas eliminar este post?')" class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn p-0 border-0 bg-transparent" title="Eliminar post">
-                                    <i class="bi bi-trash-fill" style="color: red; font-size: 1.5rem;"></i>
-                                    <!-- Ícono de basura -->
-                                </button>
-                            </form>
-                        </div>
-                    @endif
 
                     <div class="comments-section d-none mt-3">
                         <div class="comments d-flex gap-3 flex-wrap">
