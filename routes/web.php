@@ -49,6 +49,7 @@ Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.
 Route::get('/search', [SearchController::class, 'search'])->name('search')->middleware('auth');
 Route::get('/search/{name}', [SearchController::class, 'perfil'])->name('search.perfil')->middleware('auth');
 
+Route::delete('/search-history/{id}', [SearchController::class, 'destroy'])->name('search-history.destroy')->middleware('auth');
 
 Route::get('/messages', function () {
     return view('messages');

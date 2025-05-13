@@ -30,7 +30,7 @@
                 @forelse ($user->posts as $post)
                     <x-post-card :post="$post" />
                 @empty
-                    <p>No hay publicaciones que le hayan gustado.</p>
+                    <p>No hay publicado nada todavía.</p>
                 @endforelse
             </div>
 

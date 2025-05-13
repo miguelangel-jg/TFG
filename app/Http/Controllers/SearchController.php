@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\SearchHistory;
+use Illuminate\Support\Facades\Auth;
 
 class SearchController extends Controller
 {
@@ -26,17 +28,48 @@ class SearchController extends Controller
         return response()->json($usuarios);
     }
 
-    return view('search');
+    // Para la vista no-AJAX: cargar el historial del usuario logueado
+    $historial = [];
+    if (auth()->check()) {
+        $historial = SearchHistory::where('user_id', auth()->id())
+            ->with('searchedUser')
+            ->orderBy('updated_at', 'desc')
+            ->limit(8)
+            ->get();
+    }
+
+    return view('search', compact('historial'));
 }
 
     // Mostrar perfil del usuario por su nombre (único)
     public function perfil($name)
 {
     $user = User::where('name', $name)
-        ->with(['posts', 'likedPosts.user']) // Carga el autor de cada post que le gustó
+        ->with([
+            'posts' => fn($q) => $q->latest(),
+            'likedPosts.user' => fn($q) => $q->latest(),
+        ])
         ->firstOrFail();
+
+    // Guarda en el historial
+    SearchHistory::updateOrCreate(
+        ['user_id' => Auth::id(), 'searched_user_id' => $user->id],
+        ['updated_at' => now()] // para que se actualice la fecha si ya existe
+    );
 
     return view('perfilSearch', compact('user'));
 }
+
+public function destroy($id)
+{
+    $historial = SearchHistory::where('id', $id)
+        ->where('user_id', auth()->id()) // Asegura que solo se borren elementos del usuario actual
+        ->firstOrFail();
+
+    $historial->delete();
+
+    return back(); // O puedes usar `return response()->json(['success' => true]);` si quieres hacerlo por AJAX
+}
+
 
 }

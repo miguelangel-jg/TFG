@@ -157,3 +157,46 @@ header {
     color: #666;
 }
 
+/* Estilos para el historial de búsqueda */
+.search-history {
+    background-color: white;
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    max-width: 600px;
+    margin: 0 auto 2rem;
+}
+
+.search-history h6 {
+    color: var(--color-primary);
+    border-bottom: 2px solid var(--color-accent);
+    padding-bottom: 6px;
+    margin-bottom: 1rem;
+}
+
+.history-item {
+    background-color: var(--color-light-gray);
+    border-radius: 8px;
+    padding: 6px 10px;
+    transition: background-color 0.3s ease;
+}
+
+.history-item:hover {
+    background-color: var(--color-secondary);
+}
+
+.history-avatar {
+    border: 2px solid var(--color-primary);
+    object-fit: cover;
+}
+
+.history-item button {
+    opacity: 0.7;
+    transition: opacity 0.2s;
+    color: var(--color-placeholder);
+}
+
+.history-item button:hover {
+    opacity: 1;
+    color: var(--color-text);
+}
