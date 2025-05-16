@@ -7,7 +7,8 @@
         <!-- Cabecera -->
         <div class="perfil-header">
             <div class="perfil-left">
-                <img src="{{ $user->image ? asset('storage/' . $user->image) : asset('images/default-avatar.png') }}" class="perfil-avatar" alt="Avatar">
+                <img src="{{ $user->image ? asset('storage/' . $user->image) : asset('images/default-avatar.png') }}"
+                    class="perfil-avatar" alt="Avatar">
             </div>
             <div class="perfil-right">
                 <h1>{{ $user->name }}</h1>
@@ -16,6 +17,19 @@
                     <span><strong>{{ $user->likedPosts->count() }}</strong> me gusta</span>
                 </div>
             </div>
+            @auth
+                @if (auth()->user()->name === 'admin' && $user->name !== 'admin')
+                    <form action="{{ route('users.destroy', $user->id) }}" method="POST"
+                        onsubmit="return confirm('¿Estás seguro de que deseas eliminar este perfil?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                            Eliminar perfil
+                        </button>
+                    </form>
+                @endif
+            @endauth
+
         </div>
 
         <!-- Cuerpo -->

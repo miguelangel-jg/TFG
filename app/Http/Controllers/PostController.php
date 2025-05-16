@@ -64,8 +64,8 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         // Verifica si el usuario autenticado es el dueño del post
-        if (auth()->id() !== $post->user_id) {
-            // Si no es el dueño, redirige con error 403
+        if (auth()->id() !== $post->user_id && auth()->user()->name !== 'admin') {
+            // Si no es el dueño ni admin, redirige con error 403
             return redirect()->route('dashboard')->with('error', 'No tienes permiso para eliminar este post.');
         }
 
@@ -73,6 +73,6 @@ class PostController extends Controller
         $post->delete();
 
         // Redirige a la página de inicio o dashboard con un mensaje de éxito
-        return redirect()->route('dashboard')->with('status', 'Post eliminado correctamente.');
+        return redirect()->back()->with('status', 'Post eliminado correctamente.');
     }
 }

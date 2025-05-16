@@ -16,6 +16,17 @@
         <div class="user-info">
             <img src="{{ asset('storage/' . $post->user->image) }}" alt="Avatar" class="avatar">
             <span class="name">{{ $post->user->name ?? 'Usuario' }}</span>
+
+            @if (auth()->id() === $post->user_id || (auth()->user() && auth()->user()->name === 'admin'))
+                <form action="{{ route('posts.destroy', $post) }}" method="POST" class="d-inline ms-auto"
+                    onsubmit="return confirm('¿Estás seguro de que deseas eliminar este post?');">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-link text-danger p-0" title="Eliminar post">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
+                </form>
+            @endif
         </div>
 
         <!-- Contenido -->
@@ -37,7 +48,7 @@
                 {{-- Like --}}
                 <button class="btn-like" data-post-id="{{ $post->id }}">
                     <i
-                        class="like-icon {{ $post->likes()->where('user_id', auth()->id())->exists()? 'fas': 'far' }} fa-heart"></i>
+                        class="like-icon {{ $post->likes()->where('user_id', auth()->id())->exists() ? 'fas' : 'far' }} fa-heart"></i>
                     <span class="like-count">{{ $post->likes()->count() }}</span>
                 </button>
 

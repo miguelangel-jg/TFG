@@ -1,6 +1,6 @@
 <x-app-layout>
     <x-slot name="title">Configuracion</x-slot>
-    <link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/profile-config.css') }}">
 
     <header class="d-flex justify-content-between align-items-center px-3 shadow-sm bg-white">
         <!-- Título de la sección -->

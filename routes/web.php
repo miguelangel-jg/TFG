@@ -18,7 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/', function () {
     return view('auth/login');
 });
@@ -45,6 +44,8 @@ Route::delete('/comments/{comment}', [CommentController::class, 'destroy'])->nam
 //Borrar post
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
+//Eliminar usuario (solo admin):
+Route::delete('/users/{id}', [SearchController::class, 'destroyUser'])->name('users.destroy')->middleware('auth');
 
 Route::get('/search', [SearchController::class, 'search'])->name('search')->middleware('auth');
 Route::get('/search/{name}', [SearchController::class, 'perfil'])->name('search.perfil')->middleware('auth');
