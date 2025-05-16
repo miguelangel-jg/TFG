@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,6 +56,11 @@ Route::delete('/search-history/{id}', [SearchController::class, 'destroy'])->nam
 Route::get('/messages', function () {
     return view('messages');
 })->name('messages')->middleware('auth');
+
+Route::get('/messages/{name}', [MessageController::class, 'index'])->name('messages.index');
+Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
+
+
 
 
 require __DIR__ . '/auth.php';

@@ -168,3 +168,20 @@ body {
         justify-content: center;
     }
 }
+
+.btn-enviar-mensaje {
+    display: block;
+    background-color: var(--color-light-gray);
+    color: var(--color-text);
+    font-weight: bold;
+    padding: 0.6rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    border: none;
+}
+
+.btn-enviar-mensaje:hover {
+    background-color: var(--color-border);
+}
+

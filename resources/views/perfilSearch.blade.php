@@ -16,7 +16,17 @@
                     <span><strong>{{ $user->posts->count() }}</strong> publicaciones</span>
                     <span><strong>{{ $user->likedPosts->count() }}</strong> me gusta</span>
                 </div>
+                @auth
+                    @if(auth()->id() !== $user->id)
+                        <div class="mt-4 d-flex">
+                            <a href="{{ route('messages.index', $user->name) }}" class="btn-enviar-mensaje">
+                                Enviar mensaje
+                            </a>
+                        </div>
+                    @endif
+                @endauth
             </div>
+
             @auth
                 @if (auth()->user()->name === 'admin' && $user->name !== 'admin')
                     <form action="{{ route('users.destroy', $user->id) }}" method="POST"
