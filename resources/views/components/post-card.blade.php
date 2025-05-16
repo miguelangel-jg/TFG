@@ -74,7 +74,7 @@
                             <span>{{ $comment->content }}</span>
 
                             <div class="d-flex justify-content-between align-items-center mt-1 gap-2">
-                                @if (auth()->id() === $comment->user_id)
+                                @if (auth()->id() === $comment->user_id || (auth()->user() && auth()->user()->name === 'admin'))
                                     <form action="{{ route('comments.destroy', $comment) }}" method="POST"
                                         class="delete-comment-form">
                                         @csrf
