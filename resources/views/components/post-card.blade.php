@@ -17,7 +17,7 @@
             <img src="{{ asset('storage/' . $post->user->image) }}" alt="Avatar" class="avatar">
             <span class="name">{{ $post->user->name ?? 'Usuario' }}</span>
 
-            @if (auth()->id() === $post->user_id || (auth()->user() && auth()->user()->name === 'admin'))
+            @if (auth()->id() === $post->user_id || (auth()->user() && auth()->user()->role == 1))
                 <form action="{{ route('posts.destroy', $post) }}" method="POST" class="d-inline ms-auto"
                     onsubmit="return confirm('¿Estás seguro de que deseas eliminar este post?');">
                     @csrf
@@ -74,7 +74,7 @@
                             <span>{{ $comment->content }}</span>
 
                             <div class="d-flex justify-content-between align-items-center mt-1 gap-2">
-                                @if (auth()->id() === $comment->user_id || (auth()->user() && auth()->user()->name === 'admin'))
+                                @if (auth()->id() === $comment->user_id || (auth()->user() && auth()->user()->role == 1))
                                     <form action="{{ route('comments.destroy', $comment) }}" method="POST"
                                         class="delete-comment-form">
                                         @csrf

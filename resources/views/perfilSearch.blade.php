@@ -28,7 +28,7 @@
             </div>
 
             @auth
-                @if (auth()->user()->name === 'admin' && $user->name !== 'admin')
+                @if (auth()->user()->name === 'admin' && auth()->user()->role == 1)
                     <form action="{{ route('users.destroy', $user->id) }}" method="POST"
                         onsubmit="return confirm('¿Estás seguro de que deseas eliminar este perfil?');">
                         @csrf
