@@ -18,14 +18,42 @@
             <span class="name">{{ $post->user->name ?? 'Usuario' }}</span>
 
             @if (auth()->id() === $post->user_id || (auth()->user() && auth()->user()->role == 1))
-                <form action="{{ route('posts.destroy', $post) }}" method="POST" class="d-inline ms-auto"
-                    onsubmit="return confirm('¿Estás seguro de que deseas eliminar este post?');">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-link text-danger p-0" title="Eliminar post">
+                <div class="dropdown ms-auto">
+                    <!-- Botón que abre el modal -->
+                    <button type="button" class="btn btn-link text-danger p-0" data-bs-toggle="modal"
+                        data-bs-target="#deletePostModal{{ $post->id }}" title="Eliminar post">
                         <i class="fas fa-trash-alt"></i>
                     </button>
-                </form>
+
+                    <!-- Modal de confirmación -->
+                    <div class="modal fade" id="deletePostModal{{ $post->id }}" tabindex="-1"
+                        aria-labelledby="deletePostModalLabel{{ $post->id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content border-0 shadow">
+                                <div class="modal-header bg-danger text-white">
+                                    <h5 class="modal-title" id="deletePostModalLabel{{ $post->id }}">Confirmar eliminación
+                                    </h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                        aria-label="Cerrar"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ¿Estás seguro de que deseas eliminar este post? Esta acción no se puede deshacer.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancelar</button>
+
+                                    <!-- Formulario de eliminación -->
+                                    <form action="{{ route('posts.destroy', $post) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             @endif
         </div>
 

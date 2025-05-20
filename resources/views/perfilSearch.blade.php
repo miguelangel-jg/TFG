@@ -28,16 +28,41 @@
             </div>
 
             @auth
-                @if (auth()->user()->name === 'admin' && auth()->user()->role == 1)
-                    <form action="{{ route('users.destroy', $user->id) }}" method="POST"
-                        onsubmit="return confirm('¿Estás seguro de que deseas eliminar este perfil?');">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-                            Eliminar perfil
-                        </button>
-                    </form>
+                @if (auth()->user()->role == 1)
+                    <!-- Botón que abre el modal -->
+                    <button type="button" class="bg-red-600 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                        data-bs-toggle="modal" data-bs-target="#deleteUserModal{{ $user->id }}">
+                        Eliminar perfil
+                    </button>
+
+                    <!-- Modal de confirmación -->
+                    <div class="modal fade" id="deleteUserModal{{ $user->id }}" tabindex="-1"
+                        aria-labelledby="deleteUserModalLabel{{ $user->id }}" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content border-0 shadow">
+                                <div class="modal-header bg-danger text-white">
+                                    <h5 class="modal-title" id="deleteUserModalLabel{{ $user->id }}">Confirmar eliminación</h5>
+                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                        aria-label="Cerrar"></button>
+                                </div>
+                                <div class="modal-body text-dark">
+                                    ¿Estás seguro de que deseas eliminar el perfil del usuario
+                                    <strong>{{ $user->name }}</strong>? Esta acción no se puede deshacer.
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+
+                                    <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="d-inline">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 @endif
+
             @endauth
 
         </div>
