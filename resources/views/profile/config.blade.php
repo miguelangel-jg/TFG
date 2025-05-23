@@ -12,9 +12,27 @@
         <div class="app-brand">
             <img src="{{ asset('img/Logo_y_nombre.png') }}" alt="Logo de la app">
         </div>
+
+        {{-- Cerrar sesión --}}
+        <div name="content" class="">
+
+            <!-- Authentication -->
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <!-- Icono de perfil de Bootstrap -->
+                <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
+                            this.closest('form').submit();"
+                    style="color: #5cd178; font-size: 18px;text-decoration: none">
+                    <span class="me-2">
+                        <i class="bi bi-person-circle" style="font-size: 1.5rem; color: #5cd178;"></i>
+                    </span>{{ __('Cerrar Sesion') }}
+                </x-dropdown-link>
+            </form>
+        </div>
+
     </header>
 
-    <div class="py-12">
+    <div class="py-12 mb-5">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
             <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                 <div class="max-w-xl">
@@ -36,16 +54,5 @@
         </div>
     </div>
 
-    {{-- Cerrar sesión --}}
-    <div name="content" class="flex items-center justify-center mb-5 p-5">
-        <!-- Authentication -->
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
 
-            <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
-                            this.closest('form').submit();" style="color: #5cd178; font-size: 18px;">
-                {{ __('Cerrar Sesion') }}
-            </x-dropdown-link>
-        </form>
-    </div>
 </x-app-layout>
