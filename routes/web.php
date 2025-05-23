@@ -53,10 +53,7 @@ Route::get('/search/{name}', [SearchController::class, 'perfil'])->name('search.
 
 Route::delete('/search-history/{id}', [SearchController::class, 'destroy'])->name('search-history.destroy')->middleware('auth');
 
-Route::get('/messages', function () {
-    return view('messages');
-})->name('messages')->middleware('auth');
-
+Route::get('/messages', [MessageController::class, 'showMessages'])->name('messages');
 Route::get('/messages/{name}', [MessageController::class, 'index'])->name('messages.index');
 Route::post('/messages', [MessageController::class, 'store'])->name('messages.store');
 

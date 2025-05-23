@@ -59,4 +59,6 @@
             </button>
         </form>
     </div>
+
+    <script src="{{ asset('js/chats.js') }}"></script>
 </x-app-layout>

@@ -9,6 +9,33 @@ use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
 {
+
+    public function showMessages()
+{
+    $authUserId = auth()->id();
+
+    // Obtener los últimos mensajes únicos por usuario
+    $latestMessages = Message::where('sender_id', $authUserId)
+        ->orWhere('receiver_id', $authUserId)
+        ->latest('created_at')
+        ->get()
+        ->unique(function ($message) use ($authUserId) {
+            return $message->sender_id == $authUserId
+                ? $message->receiver_id
+                : $message->sender_id;
+        });
+
+    // Mapear a usuarios con los que se ha hablado
+    $chats = $latestMessages->map(function ($message) use ($authUserId) {
+        return [
+            'user' => $message->sender_id == $authUserId ? $message->receiver : $message->sender,
+            'message' => $message,
+        ];
+    });
+
+    return view('messages', compact('chats'));
+}
+
     public function index($name)
 {
     $otherUser = User::where('name', $name)->firstOrFail();
@@ -51,5 +78,6 @@ public function store(Request $request)
     $receiver = User::find($request->receiver_id);
     return redirect()->route('messages.index', ['name' => $receiver->name]);
 }
+
 
 }
