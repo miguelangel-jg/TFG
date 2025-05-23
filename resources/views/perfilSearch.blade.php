@@ -18,7 +18,7 @@
                 </div>
                 @auth
                     @if(auth()->id() !== $user->id)
-                        <div class="mt-4 d-flex">
+                        <div class="mt-4">
                             <a href="{{ route('messages.index', $user->name) }}" class="btn-enviar-mensaje">
                                 Enviar mensaje
                             </a>

@@ -153,6 +153,8 @@ body {
 @media (max-width: 768px) {
     .perfil-header {
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
         text-align: center;
     }
 
@@ -170,7 +172,7 @@ body {
 }
 
 .btn-enviar-mensaje {
-    display: block;
+    display: inline-block;
     background-color: var(--color-light-gray);
     color: var(--color-text);
     font-weight: bold;

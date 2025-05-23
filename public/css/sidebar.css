@@ -236,4 +236,20 @@
     }
   }
 
+.file-hidden{
+    display: none;
+}
+
+.image-count-label {
+  font-size: 14px;
+  color: var(--color-text);
+}
+.image-upload-button {
+  display: inline-block;
+  cursor: pointer;
+  color: var(--color-primary);
+}
+.image-upload-button:hover {
+  color: var(--color-accent);
+}
 

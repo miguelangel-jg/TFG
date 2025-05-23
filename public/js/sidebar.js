@@ -22,3 +22,11 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
+
+  document.getElementById('image').addEventListener('change', function () {
+        const count = this.files.length;
+        const label = document.getElementById('image-count');
+        label.textContent = count === 0 ? '' :
+            count === 1 ? '1 imagen seleccionada' :
+            `${count} imágenes seleccionadas`;
+    });
