@@ -47,8 +47,13 @@
                 <label for="content" class="form-label-custom">¿Qué estás pensando?</label>
                 <textarea name="content" id="content" rows="4" required></textarea>
 
-                <label for="image" class="form-label-custom mt-3">Subir imágenes (opcional)</label>
-                <input type="file" name="images[]" id="image" accept="image/*" multiple>
+                <label for="image" class="form-label-custom mt-3">
+                     <i class="bi bi-image"></i> Añadir imágenes (opcional)
+                </label>
+                <input type="file" name="images[]" id="image" accept="image/*" multiple class="file-hidden">
+
+                <!-- Contador de imágenes seleccionadas -->
+                <div id="image-count" class="image-count-label mt-2"></div>
             </div>
 
             <!-- Pie del modal -->
