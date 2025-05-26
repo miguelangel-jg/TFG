@@ -14,8 +14,11 @@
     <div class="card-body">
         <!-- Usuario -->
         <div class="user-info">
-            <img src="{{ asset('storage/' . $post->user->image) }}" alt="Avatar" class="avatar">
-            <span class="name">{{ $post->user->name ?? 'Usuario' }}</span>
+            <a href="{{ route('search.perfil', $post->user->name) }}" class="d-flex align-items-center text-decoration-none">
+                <img src="{{ asset('storage/' . $post->user->image) }}" alt="Avatar" class="avatar">
+                <span class="name ms-2">{{ $post->user->name ?? 'Usuario' }}</span>
+            </a>
+
 
             @if (auth()->id() === $post->user_id || (auth()->user() && auth()->user()->role == 1))
                 <div class="dropdown ms-auto">

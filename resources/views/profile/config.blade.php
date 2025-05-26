@@ -22,10 +22,11 @@
                 <!-- Icono de perfil de Bootstrap -->
                 <x-dropdown-link :href="route('logout')" onclick="event.preventDefault();
                             this.closest('form').submit();"
-                    style="color: #5cd178; font-size: 18px;text-decoration: none">
+                    style="color: #5cd178; font-size: 18px;text-decoration: none" class="d-flex align-items-center">
+                    {{-- Icono de cerrar sesión --}}
                     <span class="me-2">
-                        <i class="bi bi-person-circle" style="font-size: 1.5rem; color: #5cd178;"></i>
-                    </span>{{ __('Cerrar Sesion') }}
+                        <i class="bi bi-box-arrow-right" style="font-size: 1.5rem; color: #5cd178;"></i>
+                    </span>{{ __('Cerrar Sesión') }}
                 </x-dropdown-link>
             </form>
         </div>
