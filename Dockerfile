@@ -32,7 +32,7 @@ RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cac
 EXPOSE 80
 
 # Instala dependencias de Laravel
-RUN composer install --no-dev --optimize-autoloader
+RUN composer install
 
 # Genera el key si no se hace en otro lugar
 RUN php artisan key:generate
