@@ -1,7 +1,7 @@
 services:
   - type: web
     name: laravel-playground
-    runtime: docker
+    env: docker
     plan: free
     envVars:
       - key: APP_ENV
@@ -32,6 +32,7 @@ services:
         fromDatabase:
           name: playground-db
           property: password
+    startCommand: ./start.sh
 
 databases:
   - name: playground-db
