@@ -1,15 +1,8 @@
 services:
   - type: web
     name: laravel-playground
-    env: php
+    runtime: docker
     plan: free
-    buildCommand: |
-      composer install --no-dev --optimize-autoloader
-      php artisan config:clear
-      php artisan config:cache
-      php artisan route:cache
-      php artisan view:cache
-    startCommand: ./start.sh
     envVars:
       - key: APP_ENV
         value: production
