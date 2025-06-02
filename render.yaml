@@ -32,7 +32,6 @@ services:
         fromDatabase:
           name: playground-db
           property: password
-    startCommand: ./start.sh
 
 databases:
   - name: playground-db
