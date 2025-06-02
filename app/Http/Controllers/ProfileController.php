@@ -37,12 +37,6 @@ class ProfileController extends Controller
 
         // Verificar si hay un archivo de imagen
         if ($request->hasFile('profile_photo')) {
-            // Eliminar la imagen anterior si no es la predeterminada
-            if ($user->image && $user->image !== 'img/user.png') {
-                // Eliminar el archivo físico en el almacenamiento
-                Storage::disk('public')->delete($user->image);
-            }
-
             // Guardar la nueva imagen
             $path = $request->file('profile_photo')->store('perfiles', 'public');
             $user->image = $path;
