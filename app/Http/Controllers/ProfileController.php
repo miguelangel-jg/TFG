@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Post;
 
@@ -33,7 +34,21 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
-
+        $request->validate([
+            'name' => [
+                'required',
+                'string',
+                'max:255',
+                Rule::unique('users')->ignore($user->id),
+            ],
+            'email' => [
+                'required',
+                'string',
+                'email',
+                'max:255',
+                Rule::unique('users')->ignore($user->id),
+            ]
+        ]);
 
         // Verificar si hay un archivo de imagen
         if ($request->hasFile('profile_photo')) {
