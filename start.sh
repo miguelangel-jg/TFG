@@ -1,9 +1,16 @@
 #!/usr/bin/env bash
 
-php artisan migrate --force          # Ejecuta migraciones
-php artisan storage:link              # Crea el enlace simbólico para storage
-php artisan config:cache              # Cachea la configuración
-php artisan route:cache               # Cachea rutas
-php artisan view:cache                # Cachea vistas
+# Genera APP_KEY si no existe
+if [ ! -f /var/www/storage/oauth-private.key ]; then
+  php artisan key:generate
+fi
 
+# Ejecuta comandos necesarios
+php artisan config:cache
+php artisan route:cache
+php artisan view:cache
+php artisan storage:link
+php artisan migrate --force
+
+# Inicia el servidor
 php artisan serve --host=0.0.0.0 --port=$PORT
