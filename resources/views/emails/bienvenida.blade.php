@@ -17,7 +17,7 @@
                     {{-- Header --}}
                     <tr>
                         <td style="background-color:#5cd178; padding:20px; text-align:center;">
-                            <img src="{{ url('img/Logo_y_nombre.png') }}" alt="{{ config('app.name') }} Logo"
+                            <img src="{{ asset('img/Logo_y_nombre.png') }}" alt="{{ config('app.name') }} Logo"
                                 width="120" style="display:block; margin:0 auto;">
                         </td>
                     </tr>
