@@ -15,7 +15,7 @@
         <!-- Usuario -->
         <div class="user-info">
             <a href="{{ route('search.perfil', $post->user->name) }}" class="d-flex align-items-center text-decoration-none">
-                <img src="{{ asset('storage/' . $post->user->image) }}" alt="Avatar" class="avatar">
+                <img src="{{ Storage::exists('public/' . $post->user->image) ? asset('storage/' . $post->user->image) : asset('img/user.png') }}" alt="Avatar" class="avatar">
                 <span class="name ms-2">{{ $post->user->name ?? 'Usuario' }}</span>
             </a>
 
