@@ -18,7 +18,7 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->boolean('role')->default(false); // Si es 0 es usuario y si es 1 es admin
-            $table->string('image')->default('images/user.png'); // Imagen de perfil
+            $table->string('image')->default('img/user.png'); // Imagen de perfil
             $table->rememberToken();
             $table->timestamps();
         });
