@@ -32,11 +32,11 @@
                     <li class="d-flex align-items-center justify-content-between mb-2 history-item">
                         <a href="{{ route('search.perfil', $h->searchedUser->name) }}"
                            class="d-flex align-items-center text-decoration-none text-dark">
-                            <img src="{{ asset('storage/' . $h->searchedUser->image) }}"
-                                 alt="Avatar"
-                                 width="30"
-                                 height="30"
-                                 class="rounded-circle me-2 history-avatar">
+                            <img src="{{ Storage::exists('public/' . $h->searchedUser->image) ? asset('storage/' . $h->searchedUser->image) : asset('img/user.png') }}"
+                                alt="Avatar"
+                                width="30"
+                                height="30"
+                                class="rounded-circle me-2 history-avatar">
                             <span>{{ $h->searchedUser->name }}</span>
                         </a>
                         <form action="{{ route('search-history.destroy', $h->id) }}" method="POST" class="ms-2">

@@ -7,7 +7,7 @@
         <!-- HEADER del chat con avatar y nombre -->
         <div class="chat-header">
             <a href="{{ route('search.perfil', $otherUser->name) }}" class="username">
-                <img src="{{ asset('storage/' . $otherUser->image) }}" alt="{{ $otherUser->name }}" class="avatar">
+                <img src="{{ Storage::exists('public/' . $otherUser->image) ? asset('storage/' . $otherUser->image) : asset('img/user.png') }}" alt="{{ $otherUser->name }}" class="avatar">
                 <span>{{ $otherUser->name }}</span>
             </a>
         </div>
@@ -21,7 +21,7 @@
                 @endphp
                 <div class="message-wrapper {{ $isSender ? 'sent' : 'received' }}">
                     <!-- Avatar del emisor del mensaje -->
-                    <img src="{{ asset('storage/' . $user->image) }}" alt="{{ $user->name }}" class="avatar">
+                    <img src="{{ Storage::exists('public/' . $user->image) ? asset('storage/' . $user->image) : asset('img/user.png') }}" alt="{{ $user->name }}" class="avatar">
 
                     <div class="message {{ $isSender ? 'sent' : 'received' }}">
                         @if ($message->image)

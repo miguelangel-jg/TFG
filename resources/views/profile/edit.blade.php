@@ -9,8 +9,8 @@
         <!-- Cabecera -->
         <div class="perfil-header">
             <div class="perfil-left">
-                <img src="{{ $user->image ? asset('storage/' . $user->image) : asset('images/default-avatar.png') }}"
-                    class="perfil-avatar" alt="Avatar">
+                <img src="{{ $user->image && Storage::exists('public/' . $user->image) ? asset('storage/' . $user->image) : asset('images/default-avatar.png') }}"
+     class="perfil-avatar" alt="Avatar">
             </div>
             <div class="perfil-right">
                 <h1>{{ $user->name }}</h1>

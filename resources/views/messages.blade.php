@@ -15,7 +15,7 @@
     <div class="container py-4">
         @forelse ($chats as $chat)
             <a href="{{ route('messages.index', ['name' => $chat['user']->name]) }}" class="chat-preview d-flex align-items-center gap-3 p-3 mb-3 rounded chat-card text-decoration-none">
-                <img src="{{ asset('storage/' . $chat['user']->image) }}" alt="{{ $chat['user']->name }}" class="chat-avatar">
+                <img src="{{ Storage::exists('public/' . $chat['user']->image) ? asset('storage/' . $chat['user']->image) : asset('img/user.png') }}" alt="{{ $chat['user']->name }}" class="chat-avatar">
                 <div class="flex-grow-1">
                     <strong class="chat-name">{{ $chat['user']->name }}</strong><br>
                     <small class="chat-last-message">
