@@ -49,7 +49,7 @@
             @endif
 
             {{-- Actualizar foto de perfil --}}
-            <div class="mt-4">
+            <div class="mt-4 mb-4">
                 <x-input-label for="profile_photo" :value="__('Foto de Perfil')" />
                 <div class="flex items-center mt-2">
                     <img class="h-16 w-16 rounded-full object-cover"
