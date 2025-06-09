@@ -49,11 +49,11 @@
             @endif
 
             {{-- Actualizar foto de perfil --}}
-            <div>
+            <div class="mt-4">
                 <x-input-label for="profile_photo" :value="__('Foto de Perfil')" />
                 <div class="flex items-center mt-2">
                     <img class="h-16 w-16 rounded-full object-cover"
-                        src="{{ $user->image ? asset('storage/' . $user->image) : asset('img/user.png') }}"
+                        src="{{ $user->image && Storage::exists('public/' . $user->image) ? asset('storage/' . $user->image) : asset('img/user.png') }}"
                         alt="{{ $user->name }}">
                     <input id="profile_photo" name="profile_photo" type="file" class="ml-4 block w-full text-sm text-gray-500
                    file:mr-4 file:py-2 file:px-4 file:rounded-full
