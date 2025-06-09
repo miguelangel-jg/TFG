@@ -22,7 +22,7 @@ La aplicación está construida con **Laravel** en el backend y **Blade, Bootstr
 
 Puedes acceder a la aplicación en el siguiente enlace:
 
-👉 [https://theplayground.example.com](https://theplayground.example.com)
+👉 [https://theplayground.up.railway.app/](https://theplayground.up.railway.app/)
 
 ---
 
