@@ -1,28 +1,40 @@
-
 # Proyecto Final DAW: The PlayGround
 
-The Playground es una red social para apasionados del fútbol, donde los usuarios pueden compartir sus opiniones, interactuar con otros aficionados y mantenerse al día con la comunidad. Incluye un sistema de gestión con roles, permitiendo que un administrador controle el contenido y los usuarios mediante funciones CRUD.
+**The PlayGround** es una red social desarrollada como proyecto final del ciclo de Desarrollo de Aplicaciones Web. Su objetivo es ofrecer un espacio dinámico y moderno donde los usuarios puedan:
 
-Desarrollado con Laravel para ofrecer un rendimiento óptimo y una experiencia dinámica. 🚀
+- Compartir publicaciones con imágenes y texto.
+- Dar "me gusta" a las publicaciones de otros usuarios.
+- Comentar en publicaciones y mantener conversaciones.
+- Enviar mensajes privados entre usuarios en un chat 1 a 1.
+- Consultar perfiles públicos de otros miembros.
+- Seguir la actividad de la comunidad en un feed personalizado.
 
+Además, el sistema incluye un panel de administración con control de roles que permite a los administradores:
 
-## Documentación
+- Gestionar publicaciones (crear y eliminar).
+- Mantener un entorno seguro mediante funcionalidades CRUD sobre los recursos del sistema.
 
-[Documentation](https://linktodocumentation)
+La aplicación está construida con **Laravel** en el backend y **Blade, Bootstrap, CSS y JavaScript** en el frontend, lo que garantiza rendimiento, escalabilidad y una experiencia de usuario intuitiva. También incluye peticiones a APIs externas y se apoya en tecnologías modernas como Docker y PostgreSQL para facilitar su despliegue y mantenimiento.
 
+---
 
-## Despliegue
+## 🌐 Acceso a la Web
 
-Para desplegar este proyecto...
+Puedes acceder a la aplicación en el siguiente enlace:
 
-```bash
-  npm run deploy
-```
+👉 [https://theplayground.example.com](https://theplayground.example.com)
 
+---
 
-## Autores
+## 📄 Documentación
+
+Toda la documentación del proyecto, incluyendo arquitectura, funcionalidades, instalación y uso, está disponible aquí:
+
+📘 [Documentación del Proyecto](https://linktodocumentation)
+
+---
+
+## 👥 Autores
 
 - [Javier Díaz Aranda](https://github.com/javiidiaz)
-
-- [Miguel Ángel Jimenez Garrido](https://github.com/miguelangel-jg)
-
+- [Miguel Ángel Jiménez Garrido](https://github.com/miguelangel-jg)
