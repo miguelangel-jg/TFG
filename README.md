@@ -30,7 +30,7 @@ Puedes acceder a la aplicación en el siguiente enlace:
 
 Toda la documentación del proyecto, incluyendo arquitectura, funcionalidades, instalación y uso, está disponible aquí:
 
-📘 [Documentación del Proyecto](https://linktodocumentation)
+📘 [Documentación del Proyecto](https://drive.google.com/drive/folders/1OD1fOMJqe7Bd_HHkFBgZ8VxCm-1gmZDq?usp=drive_link)
 
 ---
 
